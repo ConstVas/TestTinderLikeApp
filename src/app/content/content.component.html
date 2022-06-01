@@ -1,7 +1,7 @@
 <main role="main">
     <div class="jumbotron">
         <div class="card">
-            <div *ngIf="profile$ | async as profile" class="photo-wrapper">
+            <div *ngIf="profile$ | async as profile">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
                 <div class="carousel-indicators">
                     <ng-container *ngFor="let photo of profile.photos;let index = index">

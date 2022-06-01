@@ -1,5 +1,4 @@
 * {
-    
     /* border: 2px solid rgb(255, 0, 0); */
 }
 .overlay {
@@ -21,11 +20,9 @@
     color: red;
     text-align: center;
 }
+
 div.container {
     margin-top: 67px; 
-}
-div.photo-wrapper {
-
 }
 
 .card {
@@ -34,6 +31,7 @@ div.photo-wrapper {
     margin-right: auto;
     margin-top: 100px;
     margin-bottom: 100px;
+    background-color: #63474736;
 }
 .card-text {
     display: block;
@@ -55,7 +53,7 @@ img.d-block {
     object-fit: scale-down;
 }
 .carousel-control-prev { 
-    bottom: 250px
+    bottom: 250px;
 }
 
 .carousel-control-next { 

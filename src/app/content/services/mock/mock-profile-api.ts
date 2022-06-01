@@ -98,8 +98,6 @@ export class MockProfileApi {
     private url: string = 'https://randomuser.me/api'
 
     constructor(public http: HttpClient) {
-        
-        
     }
 
 
