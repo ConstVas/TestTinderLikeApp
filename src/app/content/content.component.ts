@@ -24,8 +24,9 @@ export class ContentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {  
     this.profile$ = this.profileService.getProfile(0);
     this.profile$.subscribe(x => {
-      // todo: убрать подписку и передвавать параметр с шаблона
+      // todo: убрать подписку и передавать параметр с шаблона
       this.hasLike = x.hasLike
+      console.log(x)
     })
     this.answerEvent.asObservable().pipe(
       switchMap(like => {
