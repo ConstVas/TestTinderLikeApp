@@ -1,14 +1,13 @@
-import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Observable, of, switchMap } from 'rxjs';
 import { IProfile, IProfileService } from './services/profile.viwemodel';
-
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })
-export class ContentComponent implements OnInit, OnDestroy {
+export class ContentComponent implements OnInit {
   public profile$!: Observable<IProfile>
   public showModal: boolean = false;
   public hasLike: boolean = false;
@@ -17,9 +16,8 @@ export class ContentComponent implements OnInit, OnDestroy {
   closeModalEvent: EventEmitter<boolean> = new EventEmitter();
 
   constructor(public profileService: IProfileService) {
-  }
-  ngOnDestroy(): void {
-  }
+     
+  } 
 
   ngOnInit(): void {  
     this.profile$ = this.profileService.getProfile(0);

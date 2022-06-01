@@ -32,10 +32,6 @@ export class TestProfileService implements IProfileService {
         );
     }
 
-    addMoreProfile() {
-
-    }
-
     init() {
         this.profileList$ = from<IProfile[]>(ArrayHelper.shuffle<IProfile>(mockProfileList)); 
         this.profileListLength = ArrayHelper.shuffle<IProfile>(mockProfileList).length

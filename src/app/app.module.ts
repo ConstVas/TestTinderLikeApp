@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ContentComponent } from './content/content.component';
 import { IProfileService } from './content/services/profile.viwemodel';
 import { TestProfileService } from './content/services/test-profile.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TestProfileService } from './content/services/test-profile.service';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'main', component: ContentComponent }

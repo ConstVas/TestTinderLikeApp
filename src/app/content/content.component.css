@@ -8,7 +8,7 @@
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 2;
@@ -25,9 +25,19 @@ div.container {
     margin-top: 67px; 
 }
 div.photo-wrapper {
-   
-    height: 1000px; 
 
+}
+
+.card {
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.card-text {
+    display: block;
+    margin-bottom: 90px;
 }
 
 div.carousel {
