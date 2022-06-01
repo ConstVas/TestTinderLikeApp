@@ -1,0 +1,61 @@
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <div *ngIf="profile$ | async as profile" class="photo-wrapper">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-indicators">
+                        <ng-container *ngFor="let photo of profile.photos;let index = index">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="index"  [class]="index === 1 ? 'active' : ''" [attr.aria-current]="index === 1 ? 'active' : ''"></button>
+                        </ng-container>
+                    </div>
+                    <div class="carousel-inner">
+                        <div *ngFor="let photo of profile.photos;let index = index" class="carousel-item" [class]="index === 1 ? 'active' : ''">
+                            <img [src]="photo" class="d-block w-100" >
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <div class="fs-1 name" >
+                        {{profile.name}}
+                    </div>
+                    <div class="btns">
+                        <button class="btn btn-success btn-like" (click)="like()">
+                            <span>Like</span>
+                        </button>
+                        <button class="btn btn-danger btn-dislike" (click)="dislike()">
+                            <span>Dislike</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="description">
+                    <p>
+                        {{profile.description}}
+                    </p>
+                </div>
+            </div>
+            
+       <div *ngIf="showModal" class="overlay">
+        <div class="modal-dialog match">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Its a Match!</h5>
+                <button type="button" class="btn-close" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p class="fs-1 match-text">Its a Match!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="closeModal()">Nice</button>
+              </div>
+            </div>
+          </div>
+      </div>
+       </div>
+    </div>      
+</main>

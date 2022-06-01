@@ -1,0 +1,93 @@
+* {
+    
+    /* border: 2px solid rgb(255, 0, 0); */
+}
+.overlay {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.match {
+    bottom: -100px;
+    
+}
+.match-text {
+    color: red;
+    text-align: center;
+}
+div.container {
+    margin-top: 67px; 
+}
+div.photo-wrapper {
+   
+    height: 1000px; 
+
+}
+
+div.carousel {
+    width: 60vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    position: relative;
+    max-width: 600px; 
+}
+
+img.d-block {
+    width: 40vw;
+    height: 67vh;
+    object-fit: scale-down;
+}
+.carousel-control-prev { 
+    bottom: 250px
+}
+
+.carousel-control-next { 
+    bottom: 250px
+}
+.name {
+    position: absolute;
+    margin: auto; 
+    padding: 10px;
+    bottom: 200px;
+    width: 100%;
+    text-shadow: 1px 1px 10px #000000;
+    color: white
+}
+.btns {
+    position: absolute;
+    margin: auto; 
+    padding: 10px;
+    bottom: 62px;
+    width: 100%;
+}
+
+.btn-like { 
+    border-radius: 71px;
+    float: left;
+    height: 10vh;
+    width: 10vw;
+}
+
+.btn-dislike { 
+    float: right;
+    border-radius: 71px;
+    height: 10vh;
+    width: 10vw; 
+}
+
+.description {
+    width: 60vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    position: relative;
+    height: auto;
+    max-width: 600px; 
+}
