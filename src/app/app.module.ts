@@ -21,8 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'main', pathMatch: 'full' },
-      { path: 'main', component: ContentComponent }
+      { path: '', component: ContentComponent }
     ])
   ],
   providers: [{
