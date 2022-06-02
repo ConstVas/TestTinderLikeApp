@@ -53,17 +53,17 @@ img.d-block {
     object-fit: scale-down;
 }
 .carousel-control-prev { 
-    bottom: 250px;
+    bottom: 33%;
 }
 
 .carousel-control-next { 
-    bottom: 250px
+    bottom: 33%
 }
 .name {
     position: absolute;
     margin: auto; 
     padding: 10px;
-    bottom: 200px;
+    bottom: 15%;
     width: 100%;
     text-shadow: 1px 1px 10px #000000;
     color: white
@@ -72,7 +72,7 @@ img.d-block {
     position: absolute;
     margin: auto; 
     padding: 10px;
-    bottom: 62px;
+    bottom: 0%;
     width: 100%;
 }
 
@@ -98,4 +98,17 @@ img.d-block {
     position: relative;
     height: auto;
     max-width: 600px; 
+}
+
+.like-text {
+    background-image: url('../../assets/like.png');
+    height: 24px;
+    width: 24px;
+    margin: auto;
+}
+.dislike-text {
+    background-image: url('../../assets/dislike.png');
+    height: 24px;
+    width: 24px;
+    margin: auto;
 }

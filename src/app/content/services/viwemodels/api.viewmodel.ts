@@ -1,8 +1,3 @@
-
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-
 export interface Name {
     title: string;
     first: string;
@@ -90,21 +85,4 @@ export interface Info {
 export interface RandomUserResponce {
     results: Result[];
     info: Info;
-}
-
-@Injectable()
-export class MockProfileApi {
-
-    private url: string = 'https://randomuser.me/api'
-
-    constructor(public http: HttpClient) {
-    }
-
-
-    getRandomFemale(): Observable<RandomUserResponce> {
-        return this.http.get<RandomUserResponce>(`${this.url}?gender=female&results=10`).pipe(
-            map(x => x as RandomUserResponce)
-        )
-    }
-
 }

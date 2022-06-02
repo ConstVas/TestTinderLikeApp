@@ -1,34 +1,32 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { Observable, of, switchMap } from 'rxjs';
-import { IProfile, IProfileService } from './services/profile.viwemodel';
+import { IProfile, IProfileService } from './services/viwemodels/profile.viwemodel';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent implements OnInit, OnDestroy {
   public profile$!: Observable<IProfile>
   public showModal: boolean = false;
   public hasLike: boolean = false;
 
-  answerEvent: EventEmitter<boolean> = new EventEmitter();
+  answerEvent: EventEmitter<{clientLike: boolean, profileLike: boolean}> = new EventEmitter();
   closeModalEvent: EventEmitter<boolean> = new EventEmitter();
 
   constructor(public profileService: IProfileService) {
-     
+    this.profile$ = this.profileService.getProfile();
   } 
-
+  
   ngOnInit(): void {  
-    this.profile$ = this.profileService.getProfile(0);
-    this.profile$.subscribe(x => {
-      // todo: убрать подписку и передавать параметр с шаблона
-      this.hasLike = x.hasLike
-      console.log(x)
-    })
+    this.subscribe();
+  }
+
+  subscribe() {
     this.answerEvent.asObservable().pipe(
-      switchMap(like => {
-        if(like && this.hasLike) {
+      switchMap((event: {clientLike: boolean, profileLike: boolean}) => {
+        if(event.clientLike && event.profileLike) {
           this.showOverlay(true)
           return this.closeModalEvent.asObservable()
         } else {
@@ -40,12 +38,12 @@ export class ContentComponent implements OnInit {
     })
   }
 
-  like() {
-    this.answerEvent.emit(true)
+  like(hasLike: boolean) {
+    this.answerEvent.emit({clientLike: true, profileLike: hasLike})
   }
 
-  dislike() {
-    this.answerEvent.emit(false)
+  dislike(hasLike: boolean) {
+    this.answerEvent.emit({clientLike: false, profileLike: hasLike})
   }
 
   showOverlay(show: boolean) {
@@ -55,5 +53,9 @@ export class ContentComponent implements OnInit {
   closeModal() {
     this.closeModalEvent.emit()
     this.showOverlay(false);
+  }
+
+  ngOnDestroy(): void {
+    this.answerEvent.unsubscribe()
   }
 }

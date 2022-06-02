@@ -25,11 +25,11 @@
                     <span>{{profile.name}}</span>
                 </div>
                 <div class="btns">
-                    <button class="btn btn-success btn-like" (click)="like()">
-                        <span>Like</span>
+                    <button class="btn btn-success btn-like" (click)="like(profile.hasLike)">
+                        <div class="like-text"></div>
                     </button>
-                    <button class="btn btn-danger btn-dislike" (click)="dislike()">
-                        <span>Dislike</span>
+                    <button class="btn btn-danger btn-dislike" (click)="dislike(profile.hasLike)">
+                        <div class="dislike-text"></div>
                     </button>
                 </div>
             </div>                
@@ -40,20 +40,19 @@
             
        </div>
        <div *ngIf="showModal" class="overlay">
-        <div class="modal-dialog match">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Its a Match!</h5>
-                <button type="button" class="btn-close" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p class="fs-1 match-text">Its a Match!</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="closeModal()">Nice</button>
-              </div>
+            <div class="modal-dialog match">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Its a Match!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p class="fs-1 match-text">Its a Match!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" (click)="closeModal()">🤩</button>
+                    </div>
+                </div>
             </div>
-          </div>
       </div>
     </div>      
 </main>

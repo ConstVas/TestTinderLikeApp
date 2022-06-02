@@ -1,4 +1,4 @@
-import { IProfile } from "../profile.viwemodel";
+import { IProfile } from "../viwemodels/profile.viwemodel";
 
 export const mockProfileList: IProfile[] = [
     {
@@ -91,7 +91,7 @@ export const mockProfileList: IProfile[] = [
         hasLike: false
     },
     {
-        id: '',
+        id: '34f3fddb-93a0-4a5e-8430-8f6cc7ec9466',
         photos: [
             'https://resizer.mail.ru/p/3acc1bcb-f89f-5b7c-ad8d-dfa8540837f6/dpr:200/AAACL_fKVKlW6L3oF91_c3D19oin1HStBnA6MxIPLRzPm8Ruh863QrBNfw4YLnbYC0uIgIL9R1KFogAFXNu3VFUHPaw.jpg',
             'https://upload.wikimedia.org/wikipedia/commons/c/c9/Anya_Taylor-Joy_by_Patrick_Lovell%2C_January_2019.jpg',
