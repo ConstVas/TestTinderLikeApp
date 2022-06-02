@@ -177,16 +177,5 @@ export const mockProfileList: IProfile[] = [
         
         Fairydust's best friend is a health centre receptionist called Joel Fleming. They get on well most of the time. She also hangs around with Zachary Gardner and Austin Jacobs. They enjoy looking for clues together.`,
         hasLike: false
-    },
-    {
-        id: '',
-        photos: [
-            '',
-            '',
-            ''
-        ],
-        name: '',
-        description: ``,
-        hasLike: false
     }
 ]
