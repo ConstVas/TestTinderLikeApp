@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { IProfile, IProfileService } from './services/viwemodels/profile.viwemodel';
 
 @Component({
@@ -10,7 +10,6 @@ import { IProfile, IProfileService } from './services/viwemodels/profile.viwemod
 export class ContentComponent implements OnInit, OnDestroy {
   public profile$!: Observable<IProfile>
   public showModal: boolean = false;
-  public hasLike: boolean = false;
 
   answerEvent: EventEmitter<{clientLike: boolean, profileLike: boolean}> = new EventEmitter();
   closeModalEvent: EventEmitter<boolean> = new EventEmitter();
@@ -28,14 +27,16 @@ export class ContentComponent implements OnInit, OnDestroy {
       switchMap((event: {clientLike: boolean, profileLike: boolean}) => {
         if(event.clientLike && event.profileLike) {
           this.showOverlay(true)
-          return this.closeModalEvent.asObservable()
+          this.profile$ = this.closeModalEvent.asObservable().pipe(
+            switchMap(() => this.profileService.postAwnserAndGetProfile(event.clientLike))
+          )
+          return this.profile$;
         } else {
-          return of(true)
+          this.profile$ = this.profileService.postAwnserAndGetProfile(event.clientLike)
+          return this.profile$;
         }
-      })  
-    ).subscribe(() => {
-      this.profileService.getNewProfile()
-    })
+      })
+    ).subscribe()
   }
 
   like(hasLike: boolean) {

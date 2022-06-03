@@ -1,42 +1,49 @@
 <main role="main">
     <div class="jumbotron">
         <div class="card">
-            <div *ngIf="profile$ | async as profile">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-                <div class="carousel-indicators">
-                    <ng-container *ngFor="let photo of profile.photos;let index = index">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="index"  [class]="index === 1 ? 'active' : ''" [attr.aria-current]="index === 1 ? 'active' : ''"></button>
-                    </ng-container>
+            <div *ngIf="profile$ | async as profile; else loading">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-indicators">
+                        <ng-container *ngFor="let photo of profile.photos;let index = index">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="index"  [class]="index === 1 ? 'active' : ''" [attr.aria-current]="index === 1 ? 'active' : ''"></button>
+                        </ng-container>
+                    </div>
+                    <div class="carousel-inner">
+                        <div *ngFor="let photo of profile.photos;let index = index" class="carousel-item" [class]="index === 1 ? 'active' : ''">
+                            <img [src]="photo" class="d-block w-100" >
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <div class="fs-1 name" >
+                        <span>{{profile.name}}</span>
+                    </div>
+                    <div class="btns">
+                        <button class="btn btn-success btn-like" (click)="like(profile.hasLike)">
+                            <div class="like-text"></div>
+                        </button>
+                        <button class="btn btn-danger btn-dislike" (click)="dislike(profile.hasLike)">
+                            <div class="dislike-text"></div>
+                        </button>
+                    </div>
+                </div>                
+                <div class="card-body">
+                    <p class="card-text">{{profile.description}}</p>
                 </div>
-                <div class="carousel-inner">
-                    <div *ngFor="let photo of profile.photos;let index = index" class="carousel-item" [class]="index === 1 ? 'active' : ''">
-                        <img [src]="photo" class="d-block w-100" >
+            </div>
+            <ng-template #loading>
+                <div class="spinner">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                <div class="fs-1 name" >
-                    <span>{{profile.name}}</span>
-                </div>
-                <div class="btns">
-                    <button class="btn btn-success btn-like" (click)="like(profile.hasLike)">
-                        <div class="like-text"></div>
-                    </button>
-                    <button class="btn btn-danger btn-dislike" (click)="dislike(profile.hasLike)">
-                        <div class="dislike-text"></div>
-                    </button>
-                </div>
-            </div>                
-            <div class="card-body">
-                <p class="card-text">{{profile.description}}</p>
-            </div>
-        </div>
+            </ng-template>
             
        </div>
        <div *ngIf="showModal" class="overlay">

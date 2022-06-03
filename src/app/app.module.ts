@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { ContentComponent } from './content/content.component';
 import { IProfileService } from './content/services/viwemodels/profile.viwemodel';
 import { HttpClientModule } from '@angular/common/http';
-import { TestProfileService } from './content/services/test-profile.service';
 import { ApiProfileService } from './content/services/api-profile.service';
 
 @NgModule({
@@ -27,7 +26,7 @@ import { ApiProfileService } from './content/services/api-profile.service';
   ],
   providers: [{
     provide: IProfileService,
-    useClass: TestProfileService
+    useClass: ApiProfileService
   }],
   bootstrap: [AppComponent]
 })

@@ -109,3 +109,9 @@ img.d-block {
     width: 24px;
     margin: auto;
 }
+.spinner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50%;
+    margin-bottom: 50%;
+}

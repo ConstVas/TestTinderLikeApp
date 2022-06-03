@@ -1,3 +1,19 @@
+
+export class ProfileOptions {
+    gender?: string = 'female';
+    city?: string;
+    minAge?: number; 
+    maxAge?: number; 
+    toString() {
+        return `?${this.gender ? 'gender=' + this.gender: ''}${this.city ? '&city='+ this.city: '' }${this.minAge ? '&minAge=' + this.minAge: ''}${this.maxAge ? '&maxAge=' + this.maxAge: ''}`
+    }
+}
+
+// модель данных с сайта randomuser.me
+export interface RandomUserResponce {
+    results: Result[];
+    info: Info;
+}
 export interface Name {
     title: string;
     first: string;
@@ -82,7 +98,3 @@ export interface Info {
     version: string;
 }
 
-export interface RandomUserResponce {
-    results: Result[];
-    info: Info;
-}

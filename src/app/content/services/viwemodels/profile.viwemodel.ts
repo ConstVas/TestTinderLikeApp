@@ -1,11 +1,15 @@
 import { Observable } from "rxjs";
+import { ProfileOptions, RandomUserResponce } from "./api.viewmodel";
 
-export interface Entity {
-    id: string;
-}
 
-export interface IProfile extends Entity { 
+
+export abstract class IProfileService { 
+    abstract getProfile(options?: ProfileOptions): Observable<IProfile>
+    abstract postAwnserAndGetProfile(awnser: boolean, options?: ProfileOptions): Observable<Profile>
+} 
+export interface IProfile { 
     id: string;
+    gender: string;
     photos: string[];
     name: string;
     description: string;
@@ -14,6 +18,7 @@ export interface IProfile extends Entity {
 
 export class Profile implements IProfile {
     id: string;
+    gender: string = '';
     photos: string[] = [];
     name: string = '';
     description: string = '';
@@ -25,9 +30,14 @@ export class Profile implements IProfile {
         this.description = description;
         this.hasLike = hasLike;
     }
-}
 
-export abstract class IProfileService { 
-    abstract getProfile(): Observable<IProfile>
-    abstract getNewProfile():void
+    static randomUserResponceMapper(res: RandomUserResponce): Profile {
+        let user = res.results[0];
+        return new Profile(
+            user.id.value,
+            [user.picture.large, user.picture.medium, user.picture.thumbnail],
+            `${user.name.first}  ${user.name.last}`,
+            `${user.gender} ${user.location.country} ${user.location.city}`,
+            Math.random() > 0.5 ? true : false)
+    } 
 }
